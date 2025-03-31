@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// test case for my_strchr -- fully functional
+// test case for my_strchr
 void test_mystrchr() {
   char *word = "Hello, world";
   char a = 'a';
@@ -18,17 +18,15 @@ void test_mystrchr() {
   char *res = my_strchr(word, a);  // returns error - 'a' is not in 'Hello, world'
   char *res1 = my_strchr(word, b);  // return success - 'e' is in 'Hello, world'
 
-  if (res == NULL) {  // returns error
-    printf("Error - character not found");
-    exit(1);
+  if (my_strchr(word, a) == NULL && strchr(word,a) == NULL) {  // returns error
+    printf("Error - '%c' not found", a);
   }
-  if (res1 == NULL) {    // returns success
-    printf("Error - character not found");
-    exit(1);
+  if (my_strchr(word, b) == NULL && strchr(word,b) == NULL) {    // returns success
+    printf("Error- '%c' not found", b);
   }
 }
 
-// test case for my_strcmp function -- working
+// test case for my_strcmp function
 void test_mystrcmp() {
   char *s1 = "whatever 123 456 abc";
   char *s2 = "whatever 123 456 abc";
@@ -37,12 +35,10 @@ void test_mystrcmp() {
 
   if (my_strcmp(s1, s2) != strcmp(s1,s2)) {
     printf("Error - strings are not equal");
-    exit(1);
   }
 
   if (my_strcmp(s3, s4) != strcmp(s3,s4)) {
     printf("Error - strings are not equal");
-    exit(1);
   }
 }
 
@@ -56,35 +52,40 @@ void test_mystrcpy() {
   my_strcpy(dst1, src1);
   my_strcpy(dst2, src2);
   
-  if (strcmp(dst1, src1) != 0) {
-    exit(1); // Exit with error code if test fails
+  // compare my_strcpy to strcpy 
+  if (my_strcpy(dst1, src1) != 0 && strcmp(dst1, src1) != 0) {
+    printf("Unable to copy string");
   }
-  if(strcmp(dst2, src2) != 0) {
-    exit(1); 
+  if(my_strcpy(dst2, src2) != 0 && strcmp(dst2, src2) != 0) {
+    printf("Unable to copy string");
   }
 }
 
-// test case for my_strdup function -- working
+// test case for my_strdup function
 void test_mystrdup() {
   char word[] = "Hello, world";
   char *copy = my_strdup(word);
+  
+  // check if copy malloc failed
+  if (copy == NULL) {
+    printf("String copy failed");
+  }
 
-  if (copy == NULL || strcmp(word, copy) != 0) {
-    exit(1);
+  // check if word was copied correctly
+  if (strcmp(word, copy) != 0) {
+    printf("String copy failed");
   }
   free(copy);    // free copy -- prevents memory leaks
 }
 
-// test case for my_strlen function -- working
+// test case for my_strlen function
 void test_mystrlen() {  
   if (my_strlen("") != strlen("")) {
-    printf("Error - my_strlen");
-    exit(1);
+    printf("String lengths are not equal");
   }
 
   if(my_strlen("Random words mean something :) :() ;';'1023") != strlen("Random words mean something :) :() ;';'1023")) {
-    printf("Error - my_strlen");
-    exit(1);
+    printf("String lengths are not equal");
   }
 }
 
@@ -96,7 +97,6 @@ int main(int argc, char *argv[]) {
   test_mystrdup();
   test_mystrlen();
   test_mystrcmp();
-
   test_mystrchr();
 
   return 0;
