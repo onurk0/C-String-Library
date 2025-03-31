@@ -10,7 +10,7 @@
 
 
 // my_strchr will find the first occurance of c in *s
-// (interally, c is reprensed as a char  ASCII value)
+// (interally, c is reprensed as a char ASCII value)
 char *my_strchr(const char *s, int c) {
   
   while (*s++) {
