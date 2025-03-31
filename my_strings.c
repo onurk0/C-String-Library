@@ -21,6 +21,7 @@ char *my_strchr(const char *s, int c) {
   return NULL;
 }
 
+// compares the equality of 2 strings
 int my_strcmp(const char *s1, const char *s2) {
   while (*s1 && (*s1 == *s2)) {  // compare each letter and progress through the array
     s1++;
@@ -31,7 +32,7 @@ int my_strcmp(const char *s1, const char *s2) {
   // s1 less than s2, > 0 if s1 greater than s2 )
 }
 
-// my_strcpy will copy the src string into dst string
+// my_strcpy will copy string src into string dst
 char *my_strcpy(char *restrict dst, const char *restrict src) {
   int i = 0;
 
