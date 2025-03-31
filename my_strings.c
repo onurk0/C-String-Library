@@ -10,21 +10,13 @@
 
 
 // my_strchr will find the first occurance of c in *s
-// interally, c is reprensed as a char  ASCII value)
+// (interally, c is reprensed as a char  ASCII value)
 char *my_strchr(const char *s, int c) {
-
-  if ((char)c == '\0') {  // search character is empty
-    return NULL;
-  }
-
-  int i = 0;
-  while (s[i] != '\0') {
-
-    if (s[i] == (char)c) {
-      i++;
-      return (char *)&s[i];
+  
+  while (*s++) {
+    if (*s == c) {
+      return (char *)s;
     }
-    i++;
   }
   return NULL;
 }
