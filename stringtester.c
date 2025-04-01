@@ -10,6 +10,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+// test case for my_strcat
+void test_mystrcat() {
+  char w1[100] = "Hello, world";
+  char w2[] = ":) :(";
+  char w3[100] = "Hello, world";
+  char w4[] = ":) :(";
+  
+  if (my_strcat(w1, w2) == NULL) {
+    printf("String concatenation failed");
+  }
+  if (strcat(w3, w4) == NULL) {
+    printf("String concatenation failed");
+  }
+}
+
 // test case for my_strchr
 void test_mystrchr() {
   char *word = "Hello, world";
@@ -98,6 +113,7 @@ int main(int argc, char *argv[]) {
   test_mystrlen();
   test_mystrcmp();
   test_mystrchr();
+  test_mystrcat();
 
   return 0;
 }
