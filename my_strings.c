@@ -8,6 +8,29 @@
 #include "my_strings.h"
 #include <stdlib.h>
 
+char *my_strcat(char *restrict dst, const char *restrict src) {
+  
+  // str keeps track of the beginning of the dst string
+  // since dst no longer points to the beginning of the string
+  // but rather to the end 
+  char *str = dst;
+  
+  // move dst pointer to the end (also handles empty strings)
+  while (*dst != '\0') {
+    dst++;
+  }
+
+  // * concatenate src to dst until the end is reached
+  // * and iterate through each 
+  while (*src != '\0') {
+    *dst = *src;
+    dst++;
+    src++;
+  }
+  *dst = '\0';    // set end of string
+
+  return str;    // return beginning of the dst
+}
 
 // my_strchr will find the first occurance of c in *s
 // (interally, c is reprensed as a char ASCII value)
