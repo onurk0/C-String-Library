@@ -67,9 +67,9 @@ char *my_strcat(char *restrict dst, const char *restrict src) {
 }
 
 // my_strchr will find the first occurance of c in *s
-// (interally, c is reprensed as a char ASCII value)
 char *my_strchr(const char *s, int c) {
   
+  // go through the string; if 2 chars are matching, return
   while (*s++) {
     if (*s == c) {
       return (char *)s;
