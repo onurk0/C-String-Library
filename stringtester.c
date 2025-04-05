@@ -50,8 +50,6 @@ void test_mystrchr() {
   char *word = "Hello, world";
   char a = 'a';
   char b = 'e';
-  char *res = my_strchr(word, a);  // returns error - 'a' is not in 'Hello, world'
-  char *res1 = my_strchr(word, b);  // return success - 'e' is in 'Hello, world'
 
   if (my_strchr(word, a) == NULL && strchr(word,a) == NULL) {  // returns error
     printf("Error - '%c' not found\n", a);
