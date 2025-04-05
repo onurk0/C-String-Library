@@ -10,6 +10,26 @@
 #include <stdlib.h>
 #include <string.h>
 
+// test case for my_strstr
+void test_mystrstr() {
+  // variable declarations
+  char *haystack = "Hello, world";
+  char *needle = "world";
+  char *result = my_strstr(haystack, needle);
+  char *result2 = strstr(haystack, needle);
+  char *result3 = my_strstr("abcd", "f");
+  char *result4 = strstr("abcd", "f");
+
+  
+  if (result != NULL && result2 != NULL ) {  // test my_strstr against strstr; string IS found
+    printf("Needle not found in haystack\n");
+  }
+
+  if (result3 != NULL && result4 != NULL ) {  // test again; string NOT found
+    printf("Needle not found in haystack\n");
+  }
+}
+
 // test case for my_strcat
 void test_mystrcat() {
   char w1[100] = "Hello, world";
@@ -34,10 +54,10 @@ void test_mystrchr() {
   char *res1 = my_strchr(word, b);  // return success - 'e' is in 'Hello, world'
 
   if (my_strchr(word, a) == NULL && strchr(word,a) == NULL) {  // returns error
-    printf("Error - '%c' not found", a);
+    printf("Error - '%c' not found\n", a);
   }
   if (my_strchr(word, b) == NULL && strchr(word,b) == NULL) {    // returns success
-    printf("Error- '%c' not found", b);
+    printf("Error- '%c' not found\n", b);
   }
 }
 
@@ -114,6 +134,7 @@ int main(int argc, char *argv[]) {
   test_mystrcmp();
   test_mystrchr();
   test_mystrcat();
+  test_mystrstr();
 
   return 0;
 }
