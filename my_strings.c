@@ -8,6 +8,40 @@
 #include "my_strings.h"
 #include <stdlib.h>
 
+// my_strstr will find the first occurence of needle in haystack
+char *my_strstr(const char *haystack, const char *needle) {
+  if (*needle == '\0') {    // needle is empty string - return haystack
+    return (char*)haystack;
+  }
+
+  while (*haystack != '\0') {   // run until end of haystack
+    const char *h = haystack;    // pointer to beginning of haystack
+    const char *n = needle;     // pointer to beginning of needle
+
+
+    // iterate through the strings while current chars
+    // are equal and the end of either string has not
+    // been reached
+    while (*h != '\0' && *n != '\0' && *h == *n ) { 
+      h++;
+      n++;
+    }
+
+    // needle was found in haystack, return haystack
+    // this will also return everything after needle in the haystack
+    if (*n == '\0') {
+      return (char*)haystack;
+    }
+
+    haystack++;
+  }
+
+  return NULL; 
+}
+
+// * my_strcat will concatenate src to the end of dst
+// * a buffer overflow may occur, but it is the user's 
+// * responsibility to ensure that dst is large to concatenate
 char *my_strcat(char *restrict dst, const char *restrict src) {
   
   // str keeps track of the beginning of the dst string
