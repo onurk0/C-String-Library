@@ -2,7 +2,6 @@
     CSC 325-01
     Lab 6 - my_strings.c
     Name: Onur Kose
-    Email: koseo1@tcnj.edu
 */
 
 #include "my_strings.h"
